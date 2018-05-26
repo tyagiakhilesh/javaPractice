@@ -2,7 +2,9 @@ package com.altim.banking.loan;
 
 import com.altim.banking.commodity.Gold;
 import com.altim.banking.service.GoldRateCalculator;
+import org.springframework.stereotype.Service;
 
+@Service
 public class OldCustomerLoanImpl extends Loan {
 
     private final GoldRateCalculator goldRateCalculator;

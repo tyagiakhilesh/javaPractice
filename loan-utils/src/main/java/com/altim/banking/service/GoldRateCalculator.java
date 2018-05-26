@@ -2,7 +2,9 @@ package com.altim.banking.service;
 
 import com.altim.banking.commodity.Gold;
 import com.altim.banking.commodity.KARAT;
+import org.springframework.stereotype.Service;
 
+@Service
 public class GoldRateCalculator {
     public final static double BASE_VALUE = 750;
     private final static double INCREMENT_PER_KARAT = 50;
