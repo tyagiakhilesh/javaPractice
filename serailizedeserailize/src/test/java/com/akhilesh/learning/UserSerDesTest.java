@@ -1,5 +1,6 @@
 package com.akhilesh.learning;
 
+import org.apache.commons.io.serialization.ValidatingObjectInputStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +26,8 @@ public class UserSerDesTest {
         }
 
         try(FileInputStream fIS = new FileInputStream("user.ser");
-            ObjectInputStream oIS = new ObjectInputStream(fIS)) {
+            ValidatingObjectInputStream oIS = new ValidatingObjectInputStream(new ObjectInputStream(fIS))) {
+            oIS.accept(User.class);
             User user = (User) oIS.readObject();
             Assertions.assertTrue(u.getFirstName().equals(user.getFirstName()));
             Assertions.assertTrue(u.getLastName().equals(user.getLastName()));
