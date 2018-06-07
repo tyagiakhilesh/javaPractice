@@ -27,28 +27,28 @@ public class Malicious {
         return firstName;
     }
 
-    public final String getLastName() {
-        return lastName;
-    }
-
-    public final int getAccountNumber() {
-        return accountNumber;
-    }
-
-    public final Date getDateOpened() {
-        return new Date(dateOpened.getTime());
-    }
-
     public final void setFirstName(String aNewFirstName) {
         firstName = aNewFirstName;
+    }
+
+    public final String getLastName() {
+        return lastName;
     }
 
     public final void setLastName(String aNewLastName) {
         lastName = aNewLastName;
     }
 
+    public final int getAccountNumber() {
+        return accountNumber;
+    }
+
     public final void setAccountNumber(int aNewAccountNumber) {
         accountNumber = aNewAccountNumber;
+    }
+
+    public final Date getDateOpened() {
+        return new Date(dateOpened.getTime());
     }
 
     public final void setDateOpened(Date aNewDate) {

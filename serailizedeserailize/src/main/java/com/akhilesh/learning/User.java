@@ -16,14 +16,6 @@ public class User implements Serializable {
     private Date dateOpened;
     private Embedded embedded;
 
-    public Embedded getEmbedded() {
-        return embedded;
-    }
-
-    public void setEmbedded(Embedded embedded) {
-        this.embedded = embedded;
-    }
-
     public User(String firstName, String lastName, int accountNumber, Date dateOpened, String embedded, String base) {
         super();
         this.firstName = firstName;
@@ -38,32 +30,40 @@ public class User implements Serializable {
         super();
     }
 
+    public Embedded getEmbedded() {
+        return embedded;
+    }
+
+    public void setEmbedded(Embedded embedded) {
+        this.embedded = embedded;
+    }
+
     public final String getFirstName() {
         return firstName;
-    }
-
-    public final String getLastName() {
-        return lastName;
-    }
-
-    public final int getAccountNumber() {
-        return accountNumber;
-    }
-
-    public final Date getDateOpened() {
-        return new Date(dateOpened.getTime());
     }
 
     public final void setFirstName(String aNewFirstName) {
         firstName = aNewFirstName;
     }
 
+    public final String getLastName() {
+        return lastName;
+    }
+
     public final void setLastName(String aNewLastName) {
         lastName = aNewLastName;
     }
 
+    public final int getAccountNumber() {
+        return accountNumber;
+    }
+
     public final void setAccountNumber(int aNewAccountNumber) {
         accountNumber = aNewAccountNumber;
+    }
+
+    public final Date getDateOpened() {
+        return new Date(dateOpened.getTime());
     }
 
     public final void setDateOpened(Date aNewDate) {

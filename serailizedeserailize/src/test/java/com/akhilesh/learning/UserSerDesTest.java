@@ -15,8 +15,8 @@ public class UserSerDesTest {
     @Test
     public void testSerDes() {
         User u = new User("akhilesh", "tyagi", 1, new Date(), "embeddedString", "base");
-        try(FileOutputStream fOS = new FileOutputStream("user.ser");
-            ObjectOutputStream oOS = new ObjectOutputStream(fOS)) {
+        try (FileOutputStream fOS = new FileOutputStream("user.ser");
+             ObjectOutputStream oOS = new ObjectOutputStream(fOS)) {
             oOS.writeObject(u);
             fOS.flush();
         } catch (IOException e) {
@@ -25,8 +25,8 @@ public class UserSerDesTest {
             Assertions.fail();
         }
 
-        try(FileInputStream fIS = new FileInputStream("user.ser");
-            ValidatingObjectInputStream oIS = new ValidatingObjectInputStream(fIS)) {
+        try (FileInputStream fIS = new FileInputStream("user.ser");
+             ValidatingObjectInputStream oIS = new ValidatingObjectInputStream(fIS)) {
             oIS.accept(User.class, Embedded.class, Base.class);
             User user = (User) oIS.readObject();
             Assertions.assertTrue(u.getFirstName().equals(user.getFirstName()));
@@ -37,8 +37,8 @@ public class UserSerDesTest {
             Assertions.fail();
         }
 
-        try(FileInputStream fIS = new FileInputStream("user.ser");
-            ValidatingObjectInputStream oIS = new ValidatingObjectInputStream(fIS)) {
+        try (FileInputStream fIS = new FileInputStream("user.ser");
+             ValidatingObjectInputStream oIS = new ValidatingObjectInputStream(fIS)) {
             oIS.accept(Malicious.class);
             oIS.readObject();
             Assertions.fail();

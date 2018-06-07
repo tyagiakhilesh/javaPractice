@@ -8,12 +8,12 @@ public class Base implements Serializable {
 
     private final String base;
 
-    public String getBase() {
-        return base;
-    }
-
     public Base(String base) {
         this.base = base;
 
+    }
+
+    public String getBase() {
+        return base;
     }
 }
