@@ -14,13 +14,24 @@ public class User implements Serializable {
     private String lastName;
     private int accountNumber;
     private Date dateOpened;
+    private Embedded embedded;
 
-    public User(String firstName, String lastName, int accountNumber, Date dateOpened) {
+    public Embedded getEmbedded() {
+        return embedded;
+    }
+
+    public void setEmbedded(Embedded embedded) {
+        this.embedded = embedded;
+    }
+
+    public User(String firstName, String lastName, int accountNumber, Date dateOpened, String embedded, String base) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.accountNumber = accountNumber;
         this.dateOpened = dateOpened;
+        this.embedded = new Embedded(embedded, base);
+
     }
 
     public User() {
@@ -60,11 +71,12 @@ public class User implements Serializable {
         dateOpened = newDate;
     }
 
-    private void readObject(ObjectInputStream objectInputStream) throws IOException {
+    private void readObject(ObjectInputStream objectInputStream) throws IOException, ClassNotFoundException {
         firstName = objectInputStream.readUTF();
         lastName = objectInputStream.readUTF();
         accountNumber = objectInputStream.readInt();
         dateOpened = new Date(objectInputStream.readLong());
+        embedded = (Embedded) objectInputStream.readObject();
     }
 
     private void writeObject(ObjectOutputStream objectOutputStream) throws IOException {
@@ -72,5 +84,6 @@ public class User implements Serializable {
         objectOutputStream.writeUTF(lastName);
         objectOutputStream.writeInt(accountNumber);
         objectOutputStream.writeLong(dateOpened.getTime());
+        objectOutputStream.writeObject(embedded);
     }
 }
