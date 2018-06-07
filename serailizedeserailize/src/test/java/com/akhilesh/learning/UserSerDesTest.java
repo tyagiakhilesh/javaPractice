@@ -69,7 +69,8 @@ public class UserSerDesTest {
 
         try (FileInputStream fIS = new FileInputStream("users.ser");
              ValidatingObjectInputStream oIS = new ValidatingObjectInputStream(fIS)) {
-            oIS.accept(User.class, Embedded.class, Base.class, ArrayList.class, LinkedList.class);
+            oIS.accept(User.class, Embedded.class, Base.class);
+            oIS.accept("*List");
             List<User> usersList = (List<User>) oIS.readObject();
             Assertions.assertTrue(usersList.size() == 2);
             User user = usersList.get(0);
